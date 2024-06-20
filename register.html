@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>register</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="./fontawesome-free-6.5.2-web/css/all.min.css">
+    <link rel="stylesheet" href="./fontawesome-free-6.5.2-web/js/brands.min.js">
+    
+</head>
+<body>
+    
+    <div class='fixed  top-0 left-0 px-7 py-4 bg-blue-700 w-full text-white flex justify-between items-center  '>
+        <a href='/home.html' class=" text-4xl font-medium hover:scale-125 transition-all duration-500 ">MS</a>
+        <ul class='flex justify-between items-center text-lg transition-all duration-300 gap-3 '>
+            <li id="home" class= 'border-b-2 border-b-blue-700 hover:border-b-blue-500 transition-.all duration-300'><a href="./home.html">home</a></li>
+            <li id="login" class= 'border-b-2 border-b-blue-700 hover:border-b-blue-500 transition-all duration-300 mx-4'><a href="./login.html">login</a></li>
+            <li id="register" class= 'border-b-2 border-b-blue-700 hover:border-b-blue-500 transition-all duration-300'><a href="./register.html">register</a></li>
+
+        </ul>
+    </div>
+
+    <div id="alertfail" class='fixed top-10 right-5 p-2 rounded-md text-md text-white bg-red-500 min-w-[150px] flex flex row justify-between items-center gap-3' style="visibility: hidden;"><p id="textAlert"></p> <span id="existAlert" class="text-xl text-white cursor-pointer">X</span></div>
+    <div id="alertsuccess" class='fixed top-10 right-5 p-2 rounded-md text-md text-white bg-green-500 min-w-[150px] flex flex row justify-between items-center gap-3' style="visibility: hidden;"><p id="">successed email</p> <span id="existAlert" class="text-xl text-white cursor-pointer">X</span></div>
+
+
+
+
+
+    <div class="h-[84vh] flex justify-center bg-blue-600 items-center">
+        <form action="" class="w-[330px] md:w-[500px] lg:w-[700px] p-5 bg-white shadow-2xl rounded-lg flex flex-col justify-center gap-3">
+          <h1 class="text-4xl text-blue-500 font-medium text-center mb-2">Regiter</h1>
+          <input id="name" type="text" placeholder="name" class="p-2 rounded-md text-blue-500 outline-none border-b-2 border-white  hover:border-b-blue-500 transition-all duration-300 " />
+          <input id="userName" type="taxt" placeholder="userName" class="p-2 rounded-md text-blue-500 outline-none border-b-2  border-white hover:border-b-blue-500 transition-all duration-300 "/>
+          <input id="email" type="text" placeholder="email" class="p-2 rounded-md text-blue-500 outline-none border-b-2  border-white hover:border-b-blue-500 transition-all duration-300 "/>
+          <input id="password" type="text" placeholder="password" class="p-2 rounded-md text-blue-500 outline-none border-b-2  border-white hover:border-b-blue-500 transition-all duration-300 " />
+          <button id="btnRegister"  class="w-[90%] mx-auto rounded-md py-2 px-3 text-white bg-blue-600 hover:bg-blue-800 text-lg transition-all duration-300">Regiter</button>
+        </form>
+      </div>
+
+
+
+
+
+
+
+    <div class='w-full bg-blue-700 p-5'>
+        <h1 class='text-center text-3xl text-white'>mede by <span class='text-blue-500 text-2xl'>Mohamed Salah</span> &copy; 2024</h1>
+        <div class='flex justify-center items-center text-3xl gap-3 mt-3'>
+            <a href="mailto:m48162698@gmail.com" target='_blank' ><i class="fa-regular fa-envelope text-red-500 hover:text-red-700 hover:scale-110 transition-all duration-300"></i></a>
+            <a href="mailto:m48162698@gmail.com" target='_blank' ><i class="fa-brands fa-whatsapp text-green-500 hover:text-green-700 hover:scale-110 transition-all duration-300"></i></a>
+            <a href="tel:+201069615316" target='_blank'><i class="fa-solid fa-phone text-blue-500 hover:text-blue-500 hover:scale-110 transition-all duration-300"></i></a>
+        </div>
+    </div>
+
+
+
+
+    <script src="./register.js" type="module"></script>
+</body>
+</html>
