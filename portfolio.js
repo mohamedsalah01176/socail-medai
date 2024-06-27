@@ -1,9 +1,14 @@
 import "./node_modules/axios/dist/axios.js"
 
+let userCreated=document.querySelector('#userCreated')
+let userName=document.querySelector('#userName')
+let img=document.querySelector('#img')
+
+
+
 let home=document.querySelector("#home")
 let login=document.querySelector("#login")
 let register=document.querySelector("#register")
-let portfolio=document.querySelector("#portfolio")
 let logout=document.querySelector("#logout")
 let conPost=document.querySelector("#conPost")
 
@@ -18,27 +23,14 @@ let suctextAlert=document.querySelector("#alertsuccess #textAlert")
 let failtextAlert=document.querySelector("#alertfail #textAlert")
 let existAlert=document.querySelectorAll("#existAlert")
 
-let inputTitle=document.querySelectorAll(".inputTitle")
-let inputDes=document.querySelectorAll(".inputDes")
-let inputimg=document.querySelectorAll(".inputimg")
-let btnPost=document.querySelectorAll(".btnPost")
-let conCreatePost=document.querySelectorAll(".conCreatePost")
-let btnCreatePost=document.querySelectorAll(".btnCreatePost")
-let createPostExist=document.querySelectorAll(".createPostExist")
-
 
 
 let cookie=document.cookie.split(',')
 let token=cookie[0]
 let userNameCooke=cookie[1]
 let passwordCookie=cookie[2]
-
-let posts=[];
+let id=cookie[3]
 let postId;
-let sucstatus;
-let errstatus;
-let message;
-
 
 
 
@@ -46,16 +38,11 @@ if(token.slice(7).length ==0){
     logout.style.display="none"
     login.style.display="block"
     register.style.display="block"
-    portfolio.style.display="none"
 }else{
     logout.style.display="block"
     login.style.display="none"
     register.style.display="none"
-    portfolio.style.display="block"
 }
-
-
-
 
 logout.addEventListener("click",(e)=>{
     e.preventDefault()
@@ -76,7 +63,40 @@ logout.addEventListener("click",(e)=>{
 })
 
 
+function getInformationAboutUser(id){
+    let config={
+        headers:{
+            Authorization:`Bearer ${token.slice(6)}`
+        }
+    }
+    axios.get(`https://tarmeezacademy.com/api/v1/users/${id}`,config)
+   .then((res)=>{
+    userName.innerHTML=res.data.data.name
+    img.src= String(res.data.data.profile_image ).slice(17) === "" ?"./R.png":res.data.data.profile_image
+   }
+
+)
+}
+
+getInformationAboutUser(id)
+
+
+function getUserPosts(id){
+    let config={
+        headers:{
+            Authorization:`Bearer ${token.slice(6)}`
+        }
+    }
+    axios.get(`https://tarmeezacademy.com/api/v1/users/${id}/posts`,config).then((res)=>{
+        showPosts(res.data.data)
+    })
+}
+
+getUserPosts(id)
+
+
 function showPosts(array){
+
     conPost.innerHTML=array.map((item,index)=>{
         return(`
         <div key=${index}  class=" bg-white min-h-[500px] relative  w-full p-3 mt-0 ">
@@ -127,16 +147,6 @@ function showPosts(array){
     
 }
 
-async function getPosts(){
-    let config={headers:{
-        Authorization:`Bearer ${token.slice(6)}`
-        }
-    }
-    await axios.get("https://tarmeezacademy.com/api/v1/posts?limit=50",config).then((res)=>{
-        showPosts(res.data.data)
-    })
-}
-getPosts()
 
 
 async function getComment(id){
@@ -165,8 +175,7 @@ async function getComment(id){
     })
 }
 
-
-async function createComment(id){
+async function  createComment(id){
     let config={headers:{
         Authorization:`Bearer ${token.slice(6)}`
         }
@@ -192,12 +201,6 @@ async function createComment(id){
     
 }
 
-existAlert[0].addEventListener('click',function(){
-    alertfail.style.visibility="hidden"
-})
-existAlert[1].addEventListener('click',function(){
-    alertsuccess.style.visibility="hidden"
-})
 commentCreate.addEventListener('click',function(){
     createComment(postId)
     commentInput.value=""
@@ -206,48 +209,9 @@ commentExist.addEventListener("click",function(){
     commentCon.style.display="none"
 })
 
-
-
-function createPost(){
-    let formData=new FormData()
-    formData.append("title",inputTitle[0].value)
-    formData.append("body",inputDes[0].value)
-    formData.append("image",inputimg[0].files[0])
-    
-    let config={
-        headers:{
-            Authorization:`Bearer ${token.slice(6)}`
-        }
-    }
-    axios.post("https://tarmeezacademy.com/api/v1/posts",formData,config).then((res)=>{
-        sucstatus=res.status
-    }).catch((err)=>{
-        errstatus=err.response.status
-        message=err.response.data.message
-
-    })
-}
-
-btnPost[0].addEventListener('click',function(){
-    createPost()
-    if(sucstatus === 201){
-        conCreatePost[0].style.display="none"
-        alertsuccess.style.visibility="visible"
-        suctextAlert.innerHTML="create new post"
-        window.location.reload()
-    }
-    
-    if(errstatus === 422){
-        alertfail.style.visibility="visible"
-        failtextAlert.innerHTML=message
-    }
-
+existAlert[0].addEventListener('click',function(){
+    alertfail.style.visibility="hidden"
 })
-btnCreatePost[0].addEventListener('click',function(){
-    conCreatePost[0].style.display="flex"
-
-})
-
-createPostExist[0].addEventListener('click',function(){
-    conCreatePost[0].style.display="none"
+existAlert[1].addEventListener('click',function(){
+    alertsuccess.style.visibility="hidden"
 })

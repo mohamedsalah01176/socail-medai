@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>home</title>
+    <title>profile</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="./fontawesome-free-6.5.2-web/css/all.min.css">
@@ -18,7 +18,8 @@
         }
     </style>
 </head>
-<body class="bg-[#ccc] w-[300px] sm:w-[400px] md:w-[500px] lg:w-[700px] mx-auto">
+<body class="bg-[#ccc] w-[300px] md:w-[500px] lg:w-[700px] mx-auto">
+
     <div class='fixed z-20  top-0 left-0 px-7 py-4 bg-blue-700 w-full text-white flex justify-between items-center  '>
         <a href='/home.html' class=" text-4xl font-medium hover:scale-125 transition-all duration-500 ">MS</a>
         <ul class='flex justify-between items-center text-lg transition-all duration-300 '>
@@ -26,21 +27,14 @@
             <li id="login" class= 'border-b-2 border-b-blue-700 hover:border-b-blue-500 transition-all duration-300 mx-4'><a href="./login.html">login</a></li>
             <li id="register" class= 'border-b-2 border-b-blue-700 hover:border-b-blue-500 transition-all duration-300'><a href="./register.html">register</a></li>
             <li id="logout" class= 'border-b-2 border-b-blue-700 hover:border-b-blue-500 transition-all duration-300 mx-4'><div class="cursor-pointer">logout</div></li>
-            <li id="portfolio" class= 'border-b-2 border-b-blue-700 hover:border-b-blue-500 transition-all duration-300 mx-4'><a href="./portfolio.html" class="cursor-pointer">portfolio</a></li>
         </ul>
     </div>
     
-
-    <div class="btnCreatePost mt-[70px]  p-3 bg-white text-2xl font-bold  cursor-pointer">
-        create Post
-    </div>
-
-    <div class="conCreatePost z-10 fixed top-[140px] left-[50%] translate-x-[-50%] bg-white w-[220px] sm:w-[300px] p-3 justify-center gap-5  items-center  flex-col md:w-[450px] lg:w-[500px] h-[330px]  hidden">
-        <i class="createPostExist fa-solid fa-xmark absolute top-3 right-3 text-2xl hover:text-red-500 hover:rotate-180 transition-all duration-500 cursor-pointer"></i>
-        <input type="text" class="inputTitle w-full bg-[#eee] p-3 outline-none rounded-lg" placeholder="enter title">
-        <input type="text" class="inputDes w-full bg-[#eee] p-3 outline-none rounded-lg" placeholder="enter description">
-        <input type="file" class="inputimg w-full bg-[#eee] p-3 outline-none rounded-lg" placeholder="enter image">
-        <button  class="btnPost w-full bg-blue-500 text-white p-3 rounded-lg hover:bg-blue-600 transition-all duration-300">create post</button>
+    <div class="flex flex-col items-center justify-center mt-[80px]">
+        <div class="flex justify-between items-center gap-5">
+            <img src="./30208012115312.jpg" class="w-[200px] h-[200px] rounded-full" id="img" alt="image">
+            <h1 id="userName" class="text-3xl font-bold text-gray-800">Mohamed</h1>
+        </div>
     </div>
 
     <div id="conPost" class="min-h-[100vh] mt-[10px]  flex items-center justify-center gap-5 flex-col  p-3">
@@ -56,7 +50,6 @@
         <div id="commentList" class="flex flex-col gap-3 h-[300px] overflow-y-scroll w-[95%] mx-auto scrollbar-hide  ">
             
         </div>
-
         <div class="absolute bottom-2 flex flex-row left-[50%] translate-x-[-50%] rounded-lg w-[90%] bg-[#eee] mt-3">
             <input type="text" placeholder="write Comment" class="commentInput bg-[#eee] w-[75%] border-none outline-none rounded-lg p-3 ">
             <button class="commentCreate text-lg bg-blue-500 rounded-lg py-2 px-3 w-[25%] text-white">Create</button>
@@ -67,16 +60,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-    <script src="./home.js" type="module"></script>
+    <script src="./portfolio.js" type="module"></script>
 </body>
 </html>
