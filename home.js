@@ -82,10 +82,12 @@ function showPosts(array){
         <div key=${index}  class=" bg-white min-h-[500px] relative  w-full p-3 mt-0 ">
         ${userNameCooke === item.author.username?`<i data-id='${item.id}' class="curdExist fa-solid fa-xmark absolute top-3 right-3 text-2xl hover:text-red-500 hover:rotate-180 transition-all duration-500 cursor-pointer"></i>`:""}
                 
-            <div class="flex items-center gap-3 border-b border-[#ccc] py-1">
-                <img src=${String(item.author.profile_image).slice(17) === "" ?"./R.png":item.author.profile_image} alt="post" class="w-[40px] rounded-full"/>
+        <div class="flex items-center gap-3 border-b border-[#ccc] py-1">
+            <a href='./portfolio.html' class='flex items-center gap-3'>
+                <img src=${String(item.author.profile_image).slice(17) === "" ?"./R.png":item.author.profile_image} alt="post" class="w-[50px] h-[50px] rounded-full"/>
                 <h5 class=" font-medium">${item.author.username}</h5>
-            </div>
+            </a>
+        </div>
             <div class=" my-2">
                 <img src=${String(item.image).slice(17) === "" ?"./sIaRmaFSMfrw8QJIBAa8mA-article.png":item.image}  alt="image" class="h-[350px] w-[96%] mx-auto ">
                 <p class="text-sm text-[#ccc] ml-3">${item.created_at}</p>
@@ -97,7 +99,7 @@ function showPosts(array){
             <button data-id='${item.id}' class="commentBtn my-2 focus:outline-none">
             <p class="flex items-center gap-2 border-none outline-none"><i class="fa-solid fa-pen"></i>(${item.comments_count}) Comments</p>
             </button>
-            </div>
+        </div>
             `
         )
         
@@ -188,6 +190,10 @@ async function createComment(id){
             alertfail.style.visibility="visible"
             failtextAlert.innerHTML=err.response.data.message
         }
+        if(err.response.status === 401){
+            alertfail.style.visibility="visible"
+            failtextAlert.innerHTML="you should login" 
+        }
     })
     
 }
@@ -199,8 +205,9 @@ existAlert[1].addEventListener('click',function(){
     alertsuccess.style.visibility="hidden"
 })
 commentCreate.addEventListener('click',function(){
-    createComment(postId)
-    commentInput.value=""
+        createComment(postId)
+        commentInput.value=""
+    
 })
 commentExist.addEventListener("click",function(){
     commentCon.style.display="none"
@@ -224,6 +231,10 @@ function createPost(){
     }).catch((err)=>{
         errstatus=err.response.status
         message=err.response.data.message
+        if(err.response.status === 401){
+            alertfail.style.visibility="visible"
+            failtextAlert.innerHTML="you should login" 
+        }
 
     })
 }

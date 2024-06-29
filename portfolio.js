@@ -11,6 +11,7 @@ let login=document.querySelector("#login")
 let register=document.querySelector("#register")
 let logout=document.querySelector("#logout")
 let conPost=document.querySelector("#conPost")
+let boxUser=document.querySelector(".boxUser")
 
 let commentExist=document.querySelector(".commentExist")
 let commentCon=document.querySelector(".commentCon")
@@ -38,6 +39,8 @@ if(token.slice(7).length ==0){
     logout.style.display="none"
     login.style.display="block"
     register.style.display="block"
+    boxUser.innerHTML="should login before"
+    boxUser.style.fontSize="40px"
 }else{
     logout.style.display="block"
     login.style.display="none"
@@ -72,7 +75,7 @@ function getInformationAboutUser(id){
     axios.get(`https://tarmeezacademy.com/api/v1/users/${id}`,config)
    .then((res)=>{
     userName.innerHTML=res.data.data.name
-    img.src= String(res.data.data.profile_image ).slice(17) === "" ?"./R.png":res.data.data.profile_image
+    img.src= String(res.data.data.profile_image ).slice(17) === " " ?'./R.png':res.data.data.profile_image
    }
 
 )
@@ -103,7 +106,8 @@ function showPosts(array){
         ${userNameCooke === item.author.username?`<i data-id='${item.id}' class="curdExist fa-solid fa-xmark absolute top-3 right-3 text-2xl hover:text-red-500 hover:rotate-180 transition-all duration-500 cursor-pointer"></i>`:""}
                 
             <div class="flex items-center gap-3 border-b border-[#ccc] py-1">
-                <img src=${String(item.author.profile_image).slice(17) === "" ?"./R.png":item.author.profile_image} alt="post" class="w-[40px] rounded-full"/>
+                <img src=${String(item.author.profile_image).slice(17) === "" ?"./R.png":item.author.profile_image} alt="post" class="w-[50px]  h-[50px] rounded-full" />
+
                 <h5 class=" font-medium">${item.author.username}</h5>
             </div>
             <div class=" my-2">

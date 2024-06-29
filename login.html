@@ -8,9 +8,27 @@
     <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="./fontawesome-free-6.5.2-web/css/all.min.css">
     <link rel="stylesheet" href="./fontawesome-free-6.5.2-web/js/brands.min.js">
-    
+    <style>
+        /* width */
+        .scrollbar-body::-webkit-scrollbar {
+        width: 15px;
+        
+        }
+
+        /* Track */
+        .scrollbar-body::-webkit-scrollbar-track {
+        box-shadow: inset 0 0 5px grey;
+        border-radius: 10px;
+        }
+
+        /* Handle */
+        .scrollbar-body::-webkit-scrollbar-thumb {
+        background: rgb(6, 1, 247);
+        border-radius: 10px;
+        }
+    </style>
 </head>
-<body>
+<body class="scrollbar-body">
     
     <div class='fixed  top-0 left-0 px-7 py-4 bg-blue-700 w-full text-white flex justify-between items-center  '>
         <a href='/home.html' class=" text-4xl font-medium hover:scale-125 transition-all duration-500 ">MS</a>

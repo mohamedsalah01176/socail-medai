@@ -16,9 +16,26 @@
             -ms-overflow-style: none;  /* for Internet Explorer and Edge */
             scrollbar-width: none;  /* for Firefox */
         }
+        /* width */
+        .scrollbar-body::-webkit-scrollbar {
+        width: 15px;
+        
+        }
+
+        /* Track */
+        .scrollbar-body::-webkit-scrollbar-track {
+        box-shadow: inset 0 0 5px grey;
+        border-radius: 10px;
+        }
+
+        /* Handle */
+        .scrollbar-body::-webkit-scrollbar-thumb {
+        background: rgb(6, 1, 247);
+        border-radius: 10px;
+        }
     </style>
 </head>
-<body class="bg-[#ccc] w-[300px] md:w-[500px] lg:w-[700px] mx-auto">
+<body class="scrollbar-body bg-[#ccc] w-[300px] md:w-[500px] lg:w-[700px] mx-auto">
 
     <div class='fixed z-20  top-0 left-0 px-7 py-4 bg-blue-700 w-full text-white flex justify-between items-center  '>
         <a href='/home.html' class=" text-4xl font-medium hover:scale-125 transition-all duration-500 ">MS</a>
@@ -30,10 +47,10 @@
         </ul>
     </div>
     
-    <div class="flex flex-col items-center justify-center mt-[80px]">
+    <div class="boxUser flex flex-col items-center justify-center mt-[80px]">
         <div class="flex justify-between items-center gap-5">
-            <img src="./30208012115312.jpg" class="w-[200px] h-[200px] rounded-full" id="img" alt="image">
-            <h1 id="userName" class="text-3xl font-bold text-gray-800">Mohamed</h1>
+            <img src="./R.png" class="w-[200px] h-[200px] rounded-full" id="img" alt="image">
+                <h1 id="userName" class="text-3xl font-bold text-gray-800"></h1>
         </div>
     </div>
 

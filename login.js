@@ -29,7 +29,9 @@ async function handelLogin(e){
     }
 
         await axios.post("https://tarmeezacademy.com/api/v1/login",data).then(async(res)=>{
-            document.cookie=`token=[${res.data.token},${username},${password}]`
+            console.log(res)
+            document.cookie=`token=${res.data.token},${username},${password},${res.data.user.id}`
+            // document.cookie=`id=${res.data.user.id}`
             
             
             if(res.status === 200){
